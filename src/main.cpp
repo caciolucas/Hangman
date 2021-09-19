@@ -8,13 +8,13 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    int opcao = 1;
-    // int opcao;
-    // std::cout << "Selecione uma opção:" << std::endl;
-    // std::cout << "[0] - Sair" << std::endl;
-    // std::cout << "[1] - Iniciar um jogo" << std::endl;
-    // std::cout << "[2] - Visualizar os scores" << std::endl;
-    // std::cin >> opcao;
+    int opcao;
+    std::cout << "Selecione uma opção:" << std::endl;
+    std::cout << "[0] - Sair" << std::endl;
+    std::cout << "[1] - Iniciar um jogo" << std::endl;
+    std::cout << "[2] - Visualizar as pontuações" << std::endl << std::endl;
+    std::cout << "Opção: ";
+    std::cin >> opcao;
     
     if (opcao == 0 ){
         std::cout << "Até mais!" << std::endl;
@@ -26,25 +26,27 @@ int main(int argc, char const *argv[])
         game.pickWord();
         while(game.getStatus() == RUNNING){
             game.printGame();            
-            cout << "Digite uma letra: ";
-            cin >> letter_guess;
-            while (game.guessedAlready(letter_guess)){
+            
+            do{
                 cout << "Digite uma letra: ";
                 cin >> letter_guess;
-            }
+            } while (game.guessedAlready(letter_guess));
+            
             game.guessLetter(letter_guess);
             game.verifyState();
             GameState current_status = game.getStatus();
+
+
             if (current_status == WON){
-                game.askForContinue();
                 game.printGame();
+                game.askForContinue();
                 if (game.getStatus() == RUNNING)
                     game.pickWord();
                 
             }
             else if (current_status == LOST){
-                game.gameOver();
                 game.printGame();            
+                game.gameOver();
             }
         }
         string player_name;
@@ -52,6 +54,10 @@ int main(int argc, char const *argv[])
         cin >> player_name;
         game.setPlayerName(player_name);
         game.appendScoreToFile();
+    }
+    else if (opcao == 2){
+        HangmanGame game(argv[1]);
+        game.printScoreFile();
     }
     
 

@@ -40,3 +40,7 @@ bool Word::wordCompleted(){
             return false;
     return true;
 }
+
+vector<pair<char, bool>> Word::getLetters(){
+    return this->_letters;
+}

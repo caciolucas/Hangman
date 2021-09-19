@@ -39,6 +39,7 @@ class HangmanGame {
         void addWordFound(std::string word);
 
         void appendScoreToFile();
+        void printScoreFile();
 
         string getGuessedLetters();
         void cleanGuessedLetters();

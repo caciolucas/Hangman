@@ -198,7 +198,7 @@ void HangmanGame::addWordFound(std::string word){
 void HangmanGame::appendScoreToFile() {
     ofstream scoreFile;
     scoreFile.open("scores.txt", ios::app);
-    scoreFile << this->_player << ": " << this->_score << " pontos" << endl;
+    scoreFile << this->_player << ": " << this->_score << " pontos "  ;
     scoreFile << "( ";
     for(auto word : this->_wordsFound){
         scoreFile << word << " ";
@@ -214,4 +214,17 @@ string HangmanGame::getGuessedLetters(){
         guessedLetters += " ";
     }
     return guessedLetters;
+}
+
+void HangmanGame::printScoreFile(){
+    ifstream scoreFile;
+    scoreFile.open("scores.txt");
+    string line;
+    cout << "================== LISTA DE PONTUAÇÃO ==================" << endl;
+    cout << "Jogador: Pontuação ( LISTA DE ACERTOS )" << endl << endl;
+    while(getline(scoreFile, line)){
+        cout << line << endl;
+    }
+    scoreFile.close();
+    
 }

@@ -15,11 +15,11 @@ class Word{
         string getVisibleWord();
         string getFullWord();
         void setLetterVisible(int index, bool visible);
-        vector<pair<char, bool>> _letters; 
         
+        vector<pair<char, bool>> getLetters();
         bool wordCompleted();
     private:
-
+        vector<pair<char, bool>> _letters; 
 };
 
 #endif
