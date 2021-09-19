@@ -25,6 +25,7 @@ int main(int argc, char const *argv[])
         char letter_guess;
         game.pickWord();
         while(game.getStatus() == RUNNING){
+            game.clearScreen();
             game.printGame();            
             
             do{
@@ -38,6 +39,7 @@ int main(int argc, char const *argv[])
 
 
             if (current_status == WON){
+                game.clearScreen();
                 game.printGame();
                 game.askForContinue();
                 if (game.getStatus() == RUNNING)
@@ -45,6 +47,7 @@ int main(int argc, char const *argv[])
                 
             }
             else if (current_status == LOST){
+                game.clearScreen();
                 game.printGame();            
                 game.gameOver();
             }
@@ -57,6 +60,7 @@ int main(int argc, char const *argv[])
     }
     else if (opcao == 2){
         HangmanGame game(argv[1]);
+        game.clearScreen();
         game.printScoreFile();
     }
     

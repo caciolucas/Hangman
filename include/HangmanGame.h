@@ -44,6 +44,7 @@ class HangmanGame {
         string getGuessedLetters();
         void cleanGuessedLetters();
 
+        void clearScreen();
     private:
         int _lives;
         int _score;

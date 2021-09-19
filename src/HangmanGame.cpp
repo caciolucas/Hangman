@@ -227,4 +227,15 @@ void HangmanGame::printScoreFile(){
     }
     scoreFile.close();
     
+
+}
+void HangmanGame::clearScreen()
+{
+#if defined _WIN32
+    system("cls");
+#elif defined(LINUX) || defined(gnu_linux) || defined(linux)
+    system("clear");
+#elif defined(APPLE)
+    system("clear");
+#endif
 }
